@@ -1,3 +1,124 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary: #C7C06D;
+  --color-secondary: #4D4746;
+  --color-surface: #131315;
+  --color-glass-white: rgba(255, 255, 255, 0.05);
+  --color-glass-dark: rgba(0, 0, 0, 0.3);
+  
+  --font-orbitron: "Orbitron", sans-serif;
+  --font-inter: "Inter", sans-serif;
+}
 
+@layer base {
+  body {
+    @apply bg-surface text-gray-200 font-inter antialiased;
+    margin: 0;
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-glass-white backdrop-blur-xl border border-white/10 shadow-2xl;
+  }
+  
+  .glass-dark {
+    @apply bg-glass-dark backdrop-blur-md border border-white/5;
+  }
+  
+  .glow-primary {
+    text-shadow: 0 0 10px rgba(199, 192, 109, 0.5);
+  }
+  
+  .glow-border-primary {
+    box-shadow: 0 0 15px rgba(199, 192, 109, 0.3);
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-surface/50;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-secondary/50 rounded-full hover:bg-primary/50 transition-colors;
+  }
+}
+
+/* Markdown Prose Styling */
+.prose-tactical {
+  @apply text-gray-300 leading-relaxed;
+}
+
+.prose-tactical h1, .prose-tactical h2, .prose-tactical h3 {
+  @apply font-orbitron font-bold text-primary mt-6 mb-4 uppercase tracking-wider;
+}
+
+.prose-tactical h1 { @apply text-lg; }
+.prose-tactical h2 { @apply text-base; }
+.prose-tactical h3 { @apply text-sm; }
+
+.prose-tactical p {
+  @apply mb-4;
+}
+
+.prose-tactical ul, .prose-tactical ol {
+  @apply mb-4 ml-6 list-disc;
+}
+
+.prose-tactical li {
+  @apply mb-1;
+}
+
+.prose-tactical table {
+  @apply w-full border-collapse border border-white/10 my-6 text-xs text-left;
+}
+
+.prose-tactical th {
+  @apply bg-primary/10 text-primary font-orbitron p-3 border border-white/10 uppercase tracking-tighter;
+}
+
+.prose-tactical td {
+  @apply p-3 border border-white/10;
+}
+
+.prose-tactical tr:nth-child(even) {
+  @apply bg-white/5;
+}
+
+.prose-tactical blockquote {
+  @apply border-l-4 border-primary/40 pl-4 py-1 my-4 italic bg-primary/5;
+}
+
+.prose-tactical code {
+  @apply bg-secondary/40 px-1.5 py-0.5 rounded text-primary font-mono text-[0.8em];
+}
+
+.prose-tactical pre {
+  @apply bg-black/40 p-4 rounded-xl border border-white/5 my-6 overflow-x-auto;
+}
+
+.prose-tactical pre code {
+  @apply bg-transparent p-0 block text-xs leading-normal;
+}
+
+.prose-tactical hr {
+  @apply border-white/10 my-8;
+}
+
+.prose-tactical a {
+  @apply text-primary hover:underline;
+}
+
+.typewriter-cursor::after {
+  content: "|";
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
